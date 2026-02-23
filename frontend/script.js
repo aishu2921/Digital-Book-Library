@@ -20,7 +20,7 @@ function displayBooks(books) {
                 </p>
                 <button class="toggle-btn"
                     onclick="toggleRead('${book._id}', ${book.read})">
-                    Toggle
+                    READ/UNREAD
                 </button>
                 <button class="delete-btn"
                     onclick="deleteBook('${book._id}')">
