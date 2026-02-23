@@ -7,8 +7,8 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-
-mongoose.connect("mongodb://localhost:27017/booklibrary")
+mongoose.connect("mongodb+srv://aiswarya:aishu2005@cluster0.dw7rdin.mongodb.net/booklibrary?appName=Cluster0")
+//mongoose.connect("mongodb://localhost:27017/booklibrary")
     .then(() => console.log("✅ MongoDB Connected"))
     .catch(err => console.log(err));
 
@@ -41,4 +41,9 @@ app.delete("/books/:id", async (req, res) => {
     res.json({ message: "Deleted successfully" });
 });
 
-app.listen(3000, () => console.log("🚀 Server running on port 3000"));
+const PORT = process.env.PORT||3000;
+app.listen(PORT, () => {
+    console.log("✅ Server running on http://localhost:3000");
+});
+
+//app.listen(3000, () => console.log("🚀 Server running on port 3000"));
