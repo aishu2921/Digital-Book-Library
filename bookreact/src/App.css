@@ -1,0 +1,352 @@
+/* =========================
+   GOOGLE FONTS (IMPORTANT)
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Cinzel:wght@600;700&family=Playfair+Display:wght@500;600&display=swap');
+
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* =========================
+   CENTER FULL APP
+========================= */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(30,20,10,0.8), rgba(30,20,10,0.8)),
+                url("https://images.unsplash.com/photo-1512820790803-83ca734da794");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.App {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffd700;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+    text-shadow: 
+        0 5px 20px rgba(0,0,0,0.8),
+        0 0 15px rgba(255,215,0,0.6);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* =========================
+   BOOK FORM
+========================= */
+
+.book-form {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    padding: 25px;
+    border-radius: 20px;
+    width: 420px;
+    max-width: 95%;
+    margin: 0 auto 50px auto;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    animation: slideDown 0.8s ease;
+}
+
+.book-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+.book-form input::placeholder {
+    color: #555;
+}
+
+.book-form input:focus {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,255,255,0.7);
+}
+
+.book-form button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #d35400;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.book-form button:hover {
+    background: #a84300;
+    transform: scale(1.05);
+}
+
+/* =========================
+   BOOKS CONTAINER
+========================= */
+
+.books-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    perspective: 1500px;
+}
+
+/* =========================
+   3D BOOK CARD
+========================= */
+
+.book-card {
+    width: 200px;
+    height: 300px;
+    padding: 20px 15px;
+    position: relative;
+    border-radius: 6px;
+    background: linear-gradient(145deg, #ffffff, #f4f4f4);
+    box-shadow:
+        20px 20px 40px rgba(0,0,0,0.6),
+        inset -4px 0 6px rgba(0,0,0,0.2);
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+    border-right: 10px solid #e6e6e6;
+}
+
+/* Random Cover Colors */
+
+.book-card:nth-child(4n+1) {
+    background: linear-gradient(145deg, #ff9966, #ff5e62);
+}
+.book-card:nth-child(4n+2) {
+    background: linear-gradient(145deg, #3498db, #2c3e50);
+}
+.book-card:nth-child(4n+3) {
+    background: linear-gradient(145deg, #27ae60, #145a32);
+}
+.book-card:nth-child(4n+4) {
+    background: linear-gradient(145deg, #8e44ad, #4a235a);
+}
+
+/* Book Spine */
+
+.book-card::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    border-radius: 6px 0 0 6px;
+    background: linear-gradient(to bottom, #5d4037, #3e2723);
+    box-shadow: inset -5px 0 8px rgba(0,0,0,0.7);
+}
+
+.book-card::after {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 30%;
+    width: 20px;
+    height: 40%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.3),
+        rgba(255,255,255,0.3) 2px,
+        transparent 2px,
+        transparent 6px
+    );
+}
+
+/* Hover Effect */
+
+.book-card:hover {
+    transform: rotateY(-25deg) rotateX(8deg) translateY(-15px);
+    box-shadow: 35px 35px 70px rgba(0,0,0,0.8);
+}
+
+/* =========================
+   TEXT STYLES
+========================= */
+
+.book-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    color: #fff8dc;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+.book-card p {
+    font-size: 14px;
+    color: #f5f5f5;
+    line-height: 1.6;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.read {
+    color: #00ff99;
+}
+
+.unread {
+    color: #ff8080;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.book-card button {
+    margin-top: 8px;
+    margin-right: 5px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.toggle-btn {
+    background: #2980b9;
+    color: white;
+}
+
+.delete-btn {
+    background: #c0392b;
+    color: white;
+}
+
+.book-card button:hover {
+    transform: scale(1.1);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes slideDown {
+    from { transform: translateY(-40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+/* =========================
+   📱 MOBILE RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 768px) {
+
+    /* Reduce overall padding */
+    .App {
+        padding: 20px 15px;
+    }
+
+    /* Logo smaller on mobile */
+    .logo {
+        font-size: 30px;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+    }
+
+    /* Book form full width */
+    .book-form {
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 35px;
+    }
+
+    .book-form input {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .book-form button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    /* Stack books nicely */
+    .books-container {
+        gap: 30px;
+    }
+
+    /* Smaller book cards */
+    .book-card {
+        width: 150px;
+        height: 240px;
+        padding: 15px 10px;
+    }
+
+    /* Reduce 3D spine width */
+    .book-card::before {
+        left: -15px;
+        width: 15px;
+    }
+
+    .book-card::after {
+        left: -15px;
+        width: 15px;
+    }
+
+    /* Text adjustments */
+    .book-card h3 {
+        font-size: 15px;
+    }
+
+    .book-card p {
+        font-size: 12px;
+    }
+
+    /* Buttons smaller */
+    .book-card button {
+        font-size: 10px;
+        padding: 5px 8px;
+    }
+
+    /* Reduce hover rotation on mobile */
+    .book-card:hover {
+        transform: rotateY(-10deg) translateY(-8px);
+    }
+}
